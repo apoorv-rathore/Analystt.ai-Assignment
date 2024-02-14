@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Counter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #counter {
+        font-size: 2em;
+        margin-top: 50px;
+    }
+    #add-button {
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<h1 id="counter">0</h1>
+<button id="add-button">Add</button>
+
+<script>
+    let count = 0;
+
+    function updateCounter() {
+        document.getElementById('counter').textContent = count;
+    }
+
+    function logMountEvent() {
+        console.log('Component mounted');
+    }
+
+    function logStateChangeEvent() {
+        console.log('State changed: Count is now ' + count);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        logMountEvent();
+        updateCounter();
+
+        document.getElementById('add-button').addEventListener('click', function () {
+            count++;
+            updateCounter();
+            logStateChangeEvent();
+        });
+    });
+</script>
+</body>
+</html>
